@@ -22,26 +22,6 @@ function Items (name, fileExtension = 'jpeg') {
     allItems.push(this);
 }
 
-new Items ('bag');
-new Items('banana');
-new Items ('bathroom');
-new Items ('boots');
-new Items ('breakfast');
-new Items ('bubblegum');
-new Items ('chair');
-new Items ('cthulhu');
-new Items ('dog-duck');
-new Items ('dragon');
-new Items ('pen');
-new Items ('pet-sweep');
-new Items ('scissors');
-new Items ('shark');
-new Items ('sweep', 'png');
-new Items ('tauntaun');
-new Items ('unicorn');
-new Items ('water-can');
-new Items ('wine-glass');
-
 function selectRandomItem() {
     return Math.floor(Math.random() * allItems.length);
 }
@@ -57,6 +37,7 @@ function renderItems() {
     let item1 = indexArray.shift();
     let item2 = indexArray.shift();
     let item3 = indexArray.shift();
+
     img1.src = allItems[item1].src;
     img1.alt = allItems[item1].name;
     allItems[item1].views++;
@@ -68,6 +49,23 @@ function renderItems() {
     allItems[item3].views++; 
     console.log(indexArray);
 }
+
+// Storage
+
+function storeAItem () {
+    let stringifyItems = JSON.stringify(allItems);
+    localStorage.setItem('itemstorage', stringifyItems);
+}
+
+// Check local storage
+
+function getItems() {
+    let potentialItems = localStorage.getItem('itemstorage');
+    if(potentialItems){
+        let parsedItems = JSON.parse(potentialItems);
+        allItems = parsedItems;
+    }
+}
   
 function handleItemClick(event) {
     if (event.target === myContainer) {
@@ -75,6 +73,7 @@ function handleItemClick(event) {
     }
     clicks++;
     let clickItem = event.target.alt;
+    console.log(clickItem);
     for (let i = 0; i < allItems.length; i++) {
         if (clickItem === allItems[i].name) {
             allItems[i].clicks++;
@@ -85,8 +84,29 @@ function handleItemClick(event) {
     if (clicks === clicksAllowed) {
         myContainer.removeEventListener('click', handleItemClick);
         renderChart();
+        storeAItem();
         }
     }
+    
+    new Items ('bag');
+    new Items('banana');
+    new Items ('bathroom');
+    new Items ('boots');
+    new Items ('breakfast');
+    new Items ('bubblegum');
+    new Items ('chair');
+    new Items ('cthulhu');
+    new Items ('dog-duck');
+    new Items ('dragon');
+    new Items ('pen');
+    new Items ('pet-sweep');
+    new Items ('scissors');
+    new Items ('shark');
+    new Items ('sweep', 'png');
+    new Items ('tauntaun');
+    new Items ('unicorn');
+    new Items ('water-can');
+    new Items ('wine-glass');
 
     renderItems(); 
 
@@ -133,4 +153,5 @@ function handleItemClick(event) {
 }
 
 myContainer.addEventListener('click', handleItemClick);
+getItems(); 
 
