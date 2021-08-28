@@ -1,6 +1,6 @@
 'use strict';
 
-// global variables
+// global variables:
 
 let allItems = [];
 let clicks = 0;
@@ -14,6 +14,7 @@ let img1 = document.querySelector('section img:first-child');
 let img2 = document.querySelector('section img:nth-child(2)');
 let img3 = document.querySelector('section img:nth-child(3)');
 
+// Constructor: 
 function Items (name, fileExtension = 'jpeg') {
     this.name = name; 
     this.src = `img/${name}.${fileExtension}`;
@@ -22,6 +23,7 @@ function Items (name, fileExtension = 'jpeg') {
     allItems.push(this);
 }
 
+// to display images:
 function selectRandomItem() {
     return Math.floor(Math.random() * allItems.length);
 }
@@ -38,6 +40,7 @@ function renderItems() {
     let item2 = indexArray.shift();
     let item3 = indexArray.shift();
 
+// Delete and add to array:
     img1.src = allItems[item1].src;
     img1.alt = allItems[item1].name;
     allItems[item1].views++;
@@ -50,23 +53,24 @@ function renderItems() {
     console.log(indexArray);
 }
 
-// Storage
+// Local storage:
 
 function storeAItem () {
     let stringifyItems = JSON.stringify(allItems);
-    localStorage.setItem('itemstorage', stringifyItems);
+    localStorage.setItem('itemStorage', stringifyItems);
 }
 
-// Check local storage
+// Check local storage:
 
 function getItems() {
-    let potentialItems = localStorage.getItem('itemstorage');
+    let potentialItems = localStorage.getItem('itemStorage');
     if(potentialItems){
         let parsedItems = JSON.parse(potentialItems);
         allItems = parsedItems;
     }
 }
-  
+
+// Event handler: 
 function handleItemClick(event) {
     if (event.target === myContainer) {
         alert('Please choose an item');
@@ -87,7 +91,8 @@ function handleItemClick(event) {
         storeAItem();
         }
     }
-    
+
+// New instances: 
     new Items ('bag');
     new Items('banana');
     new Items ('bathroom');
@@ -110,6 +115,7 @@ function handleItemClick(event) {
 
     renderItems(); 
 
+    // Chart data:
     function renderChart() {
         let itemViews = []; 
         let itemClicks = [];
@@ -147,6 +153,8 @@ function handleItemClick(event) {
         }
     }
 }; 
+
+// Event listener: 
 
     let ctx = document.getElementById('myChart').getContext('2d');
     let myChart = new Chart(ctx, chartObject);

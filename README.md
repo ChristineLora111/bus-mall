@@ -1,14 +1,23 @@
 # bus-mall
 
-A/V, Practical Info, and Getting the Vote Tracker Started
+Bus Mall
 
-Lecture
-Learning Objectives
-As a result of completing Lecture 11 of Code 201, students will be able to:
+A functional catalog app that presents different products a user can purchase. 
 
-Display some number of randomly selected images in a web document, and track clicks on those images, as measured by successful completion of the daily code assignment.
-Use principles of Object-Oriented Programming to manage their vote tracker project, as measured by successful completion of the daily code assignment.
-Retrieve data from an array of image objects and display that data as a list in the DOM, as measured by successful completion of the daily code assignment.
+Collaborators: 
+- Eddie Ponce
+- Johnny Barragan
+- Brian Tarte
+- Carrie Vo
+- Brandon Mizutani
+- Aaron Burke
 
-Collaborators for project:
-Sheyna W
+With the help and demo of: Sheyna Watkins, Michael Enclava and Joe Pennock
+
+Links and Resources:
+
+Web Page
+
+Comments:
+
+This was the project we learned creating and using local storage. It was extremely difficult, but with the collaborative help from my classmates and TA's, I was able to push through and create this web app.
